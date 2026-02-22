@@ -1,0 +1,44 @@
+<div class="container-fluid mt-5">
+  <div class="form-center-wrapper w-100 mx-auto px-3">
+    <div class="card shadow">
+      <div class="card-body p-4">
+        <h2 class="card-title text-center mb-4">Login</h2>
+
+        @if (errorMessage()) {
+          <div class="alert alert-danger">{{ errorMessage() }}</div>
+        }
+
+        <!-- Form Login -->
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username"
+                   formControlName="username" placeholder="Inserisci username">
+            @if (loginForm.controls.username.touched && loginForm.controls.username.invalid) {
+              <small class="text-danger">Username obbligatorio (min. 3 caratteri)</small>
+            }
+          </div>
+
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password"
+                   formControlName="password" placeholder="Inserisci password">
+            @if (loginForm.controls.password.touched && loginForm.controls.password.invalid) {
+              <small class="text-danger">Password obbligatoria (min. 6 caratteri)</small>
+            }
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100 mt-4"
+                  [disabled]="loginForm.invalid || isLoading()">
+            {{ isLoading() ? 'Accesso in corso...' : 'Accedi' }}
+          </button>
+        </form>
+
+        <p class="text-center mt-3 mb-0">
+          Non hai un account?
+          <a routerLink="/register">Registrati</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

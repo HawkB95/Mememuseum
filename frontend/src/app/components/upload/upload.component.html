@@ -1,0 +1,51 @@
+<div class="container-fluid mt-4">
+  <div class="form-center-wrapper form-center-wrapper--wide w-100 mx-auto px-3">
+    <div class="card shadow">
+      <div class="card-body p-4">
+        <h2 class="card-title text-center mb-4">Carica un Meme</h2>
+
+        @if (errorMessage()) {
+          <div class="alert alert-danger">{{ errorMessage() }}</div>
+        }
+
+        <!-- Form Upload -->
+        <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="title" class="form-label">Titolo</label>
+            <input type="text" class="form-control" id="title"
+                   formControlName="title" placeholder="Dai un titolo al tuo meme">
+            @if (uploadForm.controls.title.touched && uploadForm.controls.title.invalid) {
+              <small class="text-danger">Il titolo è obbligatorio (max 200 caratteri)</small>
+            }
+          </div>
+
+          <div class="mb-3">
+            <label for="image" class="form-label">Immagine</label>
+            <input type="file" class="form-control" id="image"
+                   accept="image/jpeg,image/png,image/gif,image/webp"
+                   (change)="onFileSelected($event)">
+            <small class="text-muted">Formati accettati: JPEG, PNG, GIF, WebP. Max 5MB</small>
+          </div>
+
+          @if (imagePreview) {
+            <div class="mb-3 text-center">
+              <img [src]="imagePreview" alt="Anteprima" class="img-fluid rounded image-preview">
+            </div>
+          }
+
+          <div class="mb-3">
+            <label for="tags" class="form-label">Tag</label>
+            <input type="text" class="form-control" id="tags"
+                   formControlName="tags" placeholder="divertente, gatti, programmazione">
+            <small class="text-muted">Inserisci i tag separati da virgola</small>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100"
+                  [disabled]="uploadForm.invalid || !selectedFile || isLoading()">
+            {{ isLoading() ? 'Caricamento in corso...' : 'Carica Meme' }}
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

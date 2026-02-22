@@ -1,0 +1,11 @@
+<app-meme-view
+  [meme]="meme()"
+  [comments]="comments()"
+  [userVote]="userVote()"
+  [isAuthenticated]="authService.isAuthenticated()"
+  [isLoading]="isLoading()"
+  [isMemeOfTheDay]="false"
+  [isSubmittingComment]="isSubmittingComment()"
+  (vote)="onVote($event)"
+  (commentAdded)="onCommentAdded($event)">
+</app-meme-view>

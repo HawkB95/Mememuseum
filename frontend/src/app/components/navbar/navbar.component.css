@@ -1,0 +1,13 @@
+.navbar {
+  background-color: var(--primary-color);
+}
+
+.user {
+  color: var(--bg-body);
+}
+
+.navbar-toggler {
+  color: var(--bg-body); 
+  border-color: var(--bg-body);
+  font-size: 30px;
+}

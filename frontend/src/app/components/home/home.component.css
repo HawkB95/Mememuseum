@@ -1,0 +1,63 @@
+.btn-outline-secondary {
+  color: var(--bg-body);
+  border-color: var(--bg-body);
+}
+
+.btn-outline-secondary:hover {
+  color: var(--primary-hover);
+  border-color: var(--primary-hover);
+  background-color: var(--bg-body);
+}
+
+/* Card Meme */
+.card-img-top-meme {
+  height: 200px;
+  object-fit: cover;
+}
+
+.meme-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.meme-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 20px var(--primary-color);
+}
+
+.card-title {
+  font-size: 1.5em;
+}
+
+
+/* Paginazione */
+.page-index.active .page-link {
+  color: var(--bg-body);
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  border-radius: 8px;
+}
+
+.pagination-link {
+  color: var(--primary-color);
+  background-color: var(--bg-body);
+  border-color: var(--primary-color);
+  margin-inline: 1px;
+  border-radius: 8px;
+}
+
+.page-pre-suc .page-link {
+  background-color: var(--primary-color);
+  color: var(--bg-body);
+  border-radius: 8px;
+  margin-inline: 2px;
+}
+
+.page-pre-suc.disabled {
+  opacity: 0.6;
+}
+
+/* Messaggio Errore */
+.text-center .text-muted {
+  color: var(--primary-color) !important;
+  font-size: large;
+}

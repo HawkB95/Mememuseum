@@ -1,0 +1,56 @@
+<div class="container-fluid mt-5">
+  <div class="form-center-wrapper w-100 mx-auto px-3">
+    <div class="card shadow">
+      <div class="card-body p-4">
+        <h2 class="card-title text-center mb-4">Registrazione</h2>
+
+        @if (errorMessage()) {
+          <div class="alert alert-danger">{{ errorMessage() }}</div>
+        }
+        @if (successMessage()) {
+          <div class="alert alert-success">{{ successMessage() }}</div>
+        }
+
+        <!-- Form Registrazione -->
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username"
+                   formControlName="username" placeholder="Username">
+            @if (registerForm.controls.username.touched && registerForm.controls.username.invalid) {
+              <small class="text-danger">Username obbligatorio (min. 3 caratteri)</small>
+            }
+          </div>
+
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email"
+                   formControlName="email" placeholder="Email">
+            @if (registerForm.controls.email.touched && registerForm.controls.email.invalid) {
+              <small class="text-danger">Inserisci un indirizzo email valido</small>
+            }
+          </div>
+
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password"
+                   formControlName="password" placeholder="Password">
+            @if (registerForm.controls.password.touched && registerForm.controls.password.invalid) {
+              <small class="text-danger">Password obbligatoria (min. 6 caratteri)</small>
+            }
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100"
+                  [disabled]="registerForm.invalid || isLoading()">
+            {{ isLoading() ? 'Registrazione in corso...' : 'Registrati' }}
+          </button>
+        </form>
+
+        <p class="text-center mt-3 mb-0">
+          Hai già un account?
+          <a routerLink="/login">Accedi</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
