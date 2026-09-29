@@ -28,14 +28,3 @@ cd backend
 npm install
 npm run dev
 ```
-
-## Struttura del progetto
-
-- `frontend/` – applicazione Angular
-- `backend/` – API Express e logica del server
-- `e2e/` – test end-to-end con Playwright
-- `.gitignore` – file ignorati da Git
-
-## Note
-
-Il progetto è stato organizzato come repository completo per lo sviluppo locale e la condivisione del codice sorgente.
